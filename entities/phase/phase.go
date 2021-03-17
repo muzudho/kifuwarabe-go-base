@@ -1,4 +1,4 @@
-package entities
+package phase
 
 // Phase - 黒手番、または白手番。
 type Phase int
