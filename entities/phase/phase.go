@@ -1,5 +1,7 @@
 package phase
 
+import "fmt"
+
 // Phase - 黒手番、または白手番。
 type Phase int
 
@@ -12,3 +14,47 @@ const (
 	// White - 自分のパスワードを入力し、そしてプロンプトを待っています
 	White
 )
+
+// FlipColorString - 色を反転
+func FlipColorString(color string) string {
+	switch color {
+	case "B":
+		return "W"
+	case "W":
+		return "B"
+	case "b":
+		return "w"
+	case "w":
+		return "b"
+	default:
+		return color
+	}
+}
+
+// ToString - 色を大文字アルファベットに変換
+func ToString(ph Phase) string {
+	switch ph {
+	case Black:
+		return "B"
+	case White:
+		return "W"
+	default:
+		panic(fmt.Sprintf("Unexpected phase=[%d]", ph))
+	}
+}
+
+// ToNum - アルファベットを色に変換
+func ToNum(color string) Phase {
+	switch color {
+	case "B":
+		return Black
+	case "W":
+		return White
+	case "b":
+		return Black
+	case "w":
+		return White
+	default:
+		panic(fmt.Sprintf("Unexpected color=[%s]", color))
+	}
+}
